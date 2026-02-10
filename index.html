@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Design 3 UI 库 - Leen125</title>
+    
+    <!-- 引入核心CSS -->
+    <link rel="stylesheet" href="css/m3-tokens.css">
+    <link rel="stylesheet" href="css/m3-core.css">
+    <link rel="stylesheet" href="css/m3-theme.css">
+    
+    <!-- Google Fonts (Roboto) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <style>
+      body {
+        font: var(--m3-typescale-body-medium);
+        color: var(--m3-sys-on-surface);
+        background-color: var(--m3-sys-surface);
+        margin: 0;
+        padding: 20px;
+        transition: background-color var(--m3-motion-duration-medium) var(--m3-motion-easing-standard);
+      }
+      
+      .demo-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 48px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--m3-sys-outline-variant);
+      }
+      
+      .theme-controls {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      
+      .color-picker {
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: var(--m3-shape-corner-full);
+        cursor: pointer;
+        background: var(--m3-sys-primary);
+        transition: all var(--m3-motion-duration-medium) var(--m3-motion-easing-standard);
+      }
+      
+      .color-picker:hover {
+        box-shadow: var(--m3-elevation-1);
+        transform: scale(1.1);
+      }
+      
+      .demo-section {
+        margin-bottom: 48px;
+        padding: 24px;
+        background-color: var(--m3-sys-surface-container);
+        border-radius: var(--m3-shape-corner-large);
+      }
+      
+      .component-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+        margin-top: 24px;
+      }
+      
+      .code-block {
+        background-color: var(--m3-sys-surface-dim);
+        padding: 16px;
+        border-radius: var(--m3-shape-corner-medium);
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+        overflow-x: auto;
+        margin-top: 16px;
+        color: var(--m3-sys-on-surface);
+      }
+      
+      h1 { font: var(--m3-typescale-display-small); }
+      h2 { font: var(--m3-typescale-headline-medium); }
+      h3 { font: var(--m3-typescale-title-large); }
+      
+      .component-demo {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+      
+      .demo-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+      
+      footer {
+        text-align: center;
+        margin-top: 48px;
+        padding: 24px;
+        color: var(--m3-sys-on-surface-variant);
+        border-top: 1px solid var(--m3-sys-outline-variant);
+      }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="header">
+            <div>
+                <h1>Material Design 3 UI 库</h1>
+                <p class="m3-text-body-large">一个开箱即用的 Material You 设计系统</p>
+            </div>
+            <div class="theme-controls">
+                <input type="color" class="color-picker m3-color-picker" id="theme-color" value="#6750A4" title="选择主题色">
+                <m3-button variant="outlined" id="toggle-theme">切换暗色模式</m3-button>
+                <m3-button variant="filled" id="reset-theme">重置主题</m3-button>
+            </div>
+        </div>
+        
+        <!-- 按钮组件演示 -->
+        <section class="demo-section">
+            <h2>按钮组件</h2>
+            <p class="m3-text-body-medium">Material Design 3 提供了多种按钮变体，适用于不同场景。</p>
+            
+            <div class="component-grid">
+                <div class="component-demo">
+                    <h3>基础按钮</h3>
+                    <div class="demo-actions">
+                        <m3-button>填充按钮</m3-button>
+                        <m3-button variant="tonal">强调按钮</m3-button>
+                        <m3-button variant="outlined">描边按钮</m3-button>
+                        <m3-button variant="text">文本按钮</m3-button>
+                        <m3-button elevated>悬浮按钮</m3-button>
+                    </div>
+                    
+                    <div class="code-block">
+&lt;m3-button&gt;填充按钮&lt;/m3-button&gt;
+&lt;m3-button variant="tonal"&gt;强调按钮&lt;/m3-button&gt;
+&lt;m3-button variant="outlined"&gt;描边按钮&lt;/m3-button&gt;
+&lt;m3-button variant="text"&gt;文本按钮&lt;/m3-button&gt;
+&lt;m3-button elevated&gt;悬浮按钮&lt;/m3-button&gt;
+                    </div>
+                </div>
+                
+                <div class="component-demo">
+                    <h3>带图标和状态的按钮</h3>
+                    <div class="demo-actions">
+                        <m3-button icon="⭐">带图标按钮</m3-button>
+                        <m3-button variant="tonal" icon="⚙️" elevated>设置</m3-button>
+                        <m3-button variant="outlined" icon="❤️">喜欢</m3-button>
+                        <m3-button disabled>禁用按钮</m3-button>
+                        <m3-button variant="tonal" disabled>禁用强调</m3-button>
+                    </div>
+                    
+                    <div class="code-block">
+&lt;m3-button icon="⭐"&gt;带图标按钮&lt;/m3-button&gt;
+&lt;m3-button variant="tonal" icon="⚙️" elevated&gt;设置&lt;/m3-button&gt;
+&lt;m3-button variant="outlined" icon="❤️"&gt;喜欢&lt;/m3-button&gt;
+&lt;m3-button disabled&gt;禁用按钮&lt;/m3-button&gt;
+&lt;m3-button variant="tonal" disabled&gt;禁用强调&lt;/m3-button&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 卡片组件演示 -->
+        <section class="demo-section">
+            <h2>卡片组件</h2>
+            <p class="m3-text-body-medium">卡片是展示相关内容和操作的有效方式。</p>
+            
+            <div class="component-grid">
+                <m3-card>
+                    <h3 slot="header">基础卡片</h3>
+                    <p class="m3-text-body-medium">这是一个基础卡片组件，可以包含标题、内容和操作按钮。</p>
+                    <div slot="actions">
+                        <m3-button variant="text">取消</m3-button>
+                        <m3-button>确定</m3-button>
+                    </div>
+                </m3-card>
+                
+                <m3-card elevated>
+                    <h3 slot="header">悬浮卡片</h3>
+                    <p class="m3-text-body-medium">带有阴影效果的悬浮卡片，悬停时有高度变化。</p>
+                    <p class="m3-text-body-medium">尝试将鼠标悬停在这个卡片上查看效果。</p>
+                </m3-card>
+                
+                <m3-card outlined>
+                    <h3 slot="header">描边卡片</h3>
+                    <p class="m3-text-body-medium">带有边框的卡片变体，适合在复杂背景中使用。</p>
+                    <div slot="actions">
+                        <m3-button variant="outlined">了解更多</m3-button>
+                    </div>
+                </m3-card>
+            </div>
+            
+            <div class="code-block">
+&lt;m3-card&gt;
+  &lt;h3 slot="header"&gt;基础卡片&lt;/h3&gt;
+  &lt;p&gt;这是一个基础卡片组件...&lt;/p&gt;
+  &lt;div slot="actions"&gt;
+    &lt;m3-button variant="text"&gt;取消&lt;/m3-button&gt;
+    &lt;m3-button&gt;确定&lt;/m3-button&gt;
+  &lt;/div&gt;
+&lt;/m3-card&gt;
+
+&lt;m3-card elevated&gt;
+  &lt;h3 slot="header"&gt;悬浮卡片&lt;/h3&gt;
+  &lt;p&gt;带有阴影效果的悬浮卡片...&lt;/p&gt;
+&lt;/m3-card&gt;
+
+&lt;m3-card outlined&gt;
+  &lt;h3 slot="header"&gt;描边卡片&lt;/h3&gt;
+  &lt;p&gt;带有边框的卡片变体...&lt;/p&gt;
+  &lt;div slot="actions"&gt;
+    &lt;m3-button variant="outlined"&gt;了解更多&lt;/m3-button&gt;
+  &lt;/div&gt;
+&lt;/m3-card&gt;
+            </div>
+        </section>
+        
+        <!-- 开关组件演示 -->
+        <section class="demo-section">
+            <h2>开关组件</h2>
+            <p class="m3-text-body-medium">用于在两种状态之间切换的控制组件。</p>
+            
+            <div class="component-grid">
+                <div class="component-demo">
+                    <h3>基础开关</h3>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <m3-switch id="switch1">Wi-Fi</m3-switch>
+                        <m3-switch checked id="switch2">蓝牙</m3-switch>
+                        <m3-switch disabled>禁用开关</m3-switch>
+                        <m3-switch checked disabled>禁用已开启</m3-switch>
+                    </div>
+                    
+                    <div class="code-block">
+&lt;m3-switch id="switch1"&gt;Wi-Fi&lt;/m3-switch&gt;
+&lt;m3-switch checked id="switch2"&gt;蓝牙&lt;/m3-switch&gt;
+&lt;m3-switch disabled&gt;禁用开关&lt;/m3-switch&gt;
+&lt;m3-switch checked disabled&gt;禁用已开启&lt;/m3-switch&gt;
+                    </div>
+                </div>
+                
+                <div class="component-demo">
+                    <h3>开关状态</h3>
+                    <p class="m3-text-body-medium">当前Wi-Fi状态: <span id="wifi-status">关闭</span></p>
+                    <p class="m3-text-body-medium">当前蓝牙状态: <span id="bluetooth-status">开启</span></p>
+                    
+                    <div class="demo-actions">
+                        <m3-button id="toggle-wifi">切换Wi-Fi</m3-button>
+                        <m3-button id="toggle-bluetooth">切换蓝牙</m3-button>
+                    </div>
+                    
+                    <div class="code-block">
+// JavaScript 事件监听
+document.getElementById('switch1').addEventListener('change', (e) => {
+  console.log('Wi-Fi开关:', e.detail.checked);
+});
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 快速开始 -->
+        <section class="demo-section">
+            <h2>快速开始</h2>
+            <p class="m3-text-body-medium">在你的项目中使用这个UI库非常简单：</p>
+            
+            <div class="code-block">
+&lt;!-- 1. 引入核心CSS --&gt;
+&lt;link rel="stylesheet" href="css/m3-tokens.css"&gt;
+&lt;link rel="stylesheet" href="css/m3-core.css"&gt;
+&lt;link rel="stylesheet" href="css/m3-theme.css"&gt;
+
+&lt;!-- 2. 引入核心JS --&gt;
+&lt;script src="js/m3-hct-color.js"&gt;&lt;/script&gt;
+&lt;script src="js/m3-theme-engine.js"&gt;&lt;/script&gt;
+&lt;script src="js/m3-core.js"&gt;&lt;/script&gt;
+&lt;script src="js/m3-utils.js"&gt;&lt;/script&gt;
+
+&lt;!-- 3. 按需引入组件 --&gt;
+&lt;script src="js/m3-components/button.js"&gt;&lt;/script&gt;
+&lt;script src="js/m3-components/card.js"&gt;&lt;/script&gt;
+&lt;script src="js/m3-components/switch.js"&gt;&lt;/script&gt;
+
+&lt;!-- 4. 使用组件 --&gt;
+&lt;m3-button&gt;点击我&lt;/m3-button&gt;
+&lt;m3-card&gt;卡片内容&lt;/m3-card&gt;
+&lt;m3-switch&gt;开关&lt;/m3-switch&gt;
+            </div>
+            
+            <div style="margin-top: 24px; padding: 16px; background-color: var(--m3-sys-primary-container); border-radius: var(--m3-shape-corner-medium);">
+                <h3 class="m3-text-title-medium">主题控制</h3>
+                <p class="m3-text-body-medium">使用JavaScript动态控制主题：</p>
+                <div class="code-block">
+// 设置自定义主题
+window.M3Theme.generateSchemeFromSeed('#FF6B6B', false);
+
+// 切换暗色/亮色模式
+window.M3Theme.toggleTheme();
+
+// 从壁纸提取主题
+window.M3Theme.applyImageTheme('path/to/wallpaper.jpg');
+
+// 获取当前主题信息
+const theme = window.M3Theme.getThemeInfo();
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>© 2023 Leen125 Material Design 3 UI 库</p>
+            <p class="m3-text-body-small">基于 Google Material Design 3 规范构建</p>
+        </footer>
+    </div>
+    
+    <!-- 引入核心JS -->
+    <script src="js/m3-hct-color.js"></script>
+    <script src="js/m3-theme-engine.js"></script>
+    <script src="js/m3-core.js"></script>
+    <script src="js/m3-utils.js"></script>
+    
+    <!-- 引入组件 -->
+    <script src="js/m3-components/button.js"></script>
+    <script src="js/m3-components/card.js"></script>
+    <script src="js/m3-components/switch.js"></script>
+    
+    <!-- 演示页面交互脚本 -->
+    <script>
+      // 初始化主题
+      document.addEventListener('DOMContentLoaded', function() {
+        // 从本地存储加载主题
+        const savedTheme = window.M3Theme?.loadFromLocalStorage();
+        
+        // 设置颜色选择器
+        const colorPicker = document.getElementById('theme-color');
+        if (savedTheme?.seed) {
+          colorPicker.value = savedTheme.seed;
+        }
+        
+        // 颜色选择器事件
+        colorPicker.addEventListener('input', function() {
+          if (window.M3Theme) {
+            const isDark = document.documentElement.dataset.theme === 'dark';
+            window.M3Theme.generateSchemeFromSeed(this.value, isDark);
+          }
+        });
+        
+        // 主题切换按钮
+        document.getElementById('toggle-theme').addEventListener('click', function() {
+          if (window.M3Theme) {
+            window.M3Theme.toggleTheme();
+            // 更新按钮文本
+            const isDark = document.documentElement.dataset.theme === 'dark';
+            this.textContent = isDark ? '切换亮色模式' : '切换暗色模式';
+          }
+        });
+        
+        // 重置主题按钮
+        document.getElementById('reset-theme').addEventListener('click', function() {
+          if (window.M3Theme) {
+            window.M3Theme.resetToDefault();
+            colorPicker.value = '#6750A4';
+          }
+        });
+        
+        // 开关事件监听
+        const switch1 = document.getElementById('switch1');
+        const switch2 = document.getElementById('switch2');
+        
+        if (switch1) {
+          switch1.addEventListener('change', function(e) {
+            document.getElementById('wifi-status').textContent = e.detail.checked ? '开启' : '关闭';
+          });
+        }
+        
+        if (switch2) {
+          switch2.addEventListener('change', function(e) {
+            document.getElementById('bluetooth-status').textContent = e.detail.checked ? '开启' : '关闭';
+          });
+        }
+        
+        // 开关控制按钮
+        document.getElementById('toggle-wifi')?.addEventListener('click', function() {
+          if (switch1) {
+            switch1.toggle();
+          }
+        });
+        
+        document.getElementById('toggle-bluetooth')?.addEventListener('click', function() {
+          if (switch2) {
+            switch2.toggle();
+          }
+        });
+        
+        // 初始化按钮状态
+        const isDark = document.documentElement.dataset.theme === 'dark';
+        document.getElementById('toggle-theme').textContent = isDark ? '切换亮色模式' : '切换暗色模式';
+        
+        // 监听主题变化事件
+        window.addEventListener('m3-theme-change', function(event) {
+          console.log('主题已变更:', event.detail);
+          
+          // 更新颜色选择器
+          const colorPicker = document.getElementById('theme-color');
+          if (colorPicker && event.detail.seed) {
+            colorPicker.value = event.detail.seed;
+          }
+          
+          // 更新切换按钮文本
+          const toggleBtn = document.getElementById('toggle-theme');
+          if (toggleBtn) {
+            toggleBtn.textContent = event.detail.isDark ? '切换亮色模式' : '切换暗色模式';
+          }
+        });
+        
+        // 跟随系统主题（如果没有手动设置过）
+        if (!savedTheme && window.M3Theme) {
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+          if (prefersDark.matches) {
+            window.M3Theme.toggleTheme(true);
+          }
+        }
+      });
+    </script>
+</body>
+</html>
