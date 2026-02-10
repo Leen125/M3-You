@@ -8,7 +8,7 @@ https://m3u.leen125.icu/
 
 ## 快速开始
 
-1. 下载所有文件到你的项目 从github下载或从国内源下载: https://pan.leen125.icu/M3-You/   
+1. 下载所有文件到你的项目 从github下载：https://github.com/Leen125/M3-You/releases/ 或从国内源下载: https://pan.leen125.icu/M3-You/   
 2. 在HTML中引入核心文件：
 
 ```html
@@ -108,4 +108,5 @@ Safari 10.1+
 
 
 Edge 79+
+
 
